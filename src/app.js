@@ -8,7 +8,7 @@ var webSocket = require('ws'),
 	}),
 	led, frame, pitch, roll, hand_normal;
 
-	var sensitivity_constant = 300;
+	var sensitivity_constant = -100;
 
 	var out = [0, 0, 0];
 
@@ -27,19 +27,11 @@ var socketWrite = function(sensitivity_constant) {
 	 //    	// Leap Pitch: Forward is positive
 	 //    	// Leap Thumb on Left => -1
 	 		
-	    	roll = Math.round(hand_normal[0]*sensitivity_constant + 500);	    	
-	    	//if (roll < 10) roll = String("00" + roll);
-	    	//else if (roll < 100) roll = String("0" + roll);
+	    	pitch = Math.round(hand_normal[0]*sensitivity_constant + 500);	
 
-	    	// console.log('Roll: ' + roll);
+	    	roll = Math.round(hand_normal[2]*sensitivity_constant + 500);
 
 	    	serialPort.write("1" + roll + "\r");
-
-	    	pitch = Math.round(hand_normal[2]*sensitivity_constant + 500);
-	    	//if (pitch < 10) pitch = String("00" + pitch);
-	    	//else if (pitch < 100) pitch = String("0" + pitch);
-
-	    	// console.log('Pitch: ' + pitch);
 
 	    	serialPort.write("0" + pitch + "\r");
 

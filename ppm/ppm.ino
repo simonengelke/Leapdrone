@@ -6,7 +6,7 @@ Channel 4 - Yah
 Channel 2 - Pitch
 Channel 1 - Roll */
 
-int channels[6] = {1200,1175,1200,1300,1200,1200};
+int channels[6] = {0,1175,1200,1300,1200,1200};
 char chr;
 String str;
 void setup(void){
